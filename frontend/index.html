@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Docusort</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Docusort Knowledge Workspace</h1>
+      <p>Upload your documents, ask questions, and generate tailored summaries.</p>
+    </header>
+
+    <main>
+      <section class="card" id="upload">
+        <h2>Upload documents</h2>
+        <form id="upload-form">
+          <input type="file" id="file-input" multiple />
+          <button type="submit">Upload</button>
+        </form>
+        <p class="hint">Supported: PDF, DOCX, TXT, Markdown, CSV, JSON.</p>
+      </section>
+
+      <section class="card" id="documents">
+        <h2>Your document library</h2>
+        <ul id="document-list"></ul>
+      </section>
+
+      <section class="card" id="query">
+        <h2>Ask a question</h2>
+        <form id="query-form">
+          <label for="question">Question</label>
+          <textarea id="question" rows="3" placeholder="e.g. Summarise the obligations defined in clause 5"></textarea>
+          <label for="query-documents">Limit to documents</label>
+          <select id="query-documents" multiple></select>
+          <button type="submit">Run query</button>
+        </form>
+        <article id="query-result" class="result"></article>
+      </section>
+
+      <section class="card" id="synthesis">
+        <h2>Create a tailored document</h2>
+        <form id="synthesis-form">
+          <label for="synthesis-request">Describe what you need</label>
+          <textarea id="synthesis-request" rows="3" placeholder="e.g. Create a profit and loss statement for my rental properties"></textarea>
+          <label for="synthesis-title">Output title (optional)</label>
+          <input id="synthesis-title" type="text" placeholder="Profit &amp; Loss Overview" />
+          <label for="synthesis-documents">Limit to documents</label>
+          <select id="synthesis-documents" multiple></select>
+          <button type="submit">Generate</button>
+        </form>
+        <article id="synthesis-result" class="result"></article>
+      </section>
+    </main>
+
+    <template id="document-item-template">
+      <li>
+        <span class="document-name"></span>
+        <button class="delete">Remove</button>
+      </li>
+    </template>
+
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
