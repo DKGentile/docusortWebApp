@@ -2,31 +2,29 @@
 
 DocuSort is a local proof-of-concept for organizing and querying personal documents with retrieval-augmented generation (RAG). It lets you upload PDFs, DOCX, and TXT files, stores originals locally, embeds their contents in a shared ChromaDB collection, and offers a ChatGPT-style UI with a synthetic "Sort" tree to condition questions on selected files.
 
-## Prerequisites
+##Requirements
 
-- Python 3.10+
-- Node.js 18+ with npm
-- An OpenAI API key added to `OPENAI_API_KEY_VALUE` in `backend/config.py` (or exported as `OPENAI_API_KEY`)
+-Python 3.10+
+-Node.js 18+ with npm
+-An OpenAI API key (`OPENAI_API_KEY_VALUE` in `backend/config.py`)
 
-## Backend Setup (FastAPI)
+##Backend Deploy (FastAPI)
 
-1. Navigate to `backend/`.
-2. Create and activate a virtual environment (recommended).
-3. Install dependencies:
+1. CD to `backend/`
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-4. Update `backend/config.py` with your OpenAI key (or export `OPENAI_API_KEY`).
-5. Start the API with auto-reload:
+3. Start the API with auto-reload:
    ```bash
    uvicorn backend.main:app --reload --port 8000
    ```
 
 The backend stores data under `backend/data/` (uploads, ChromaDB files, and metadata).
 
-## Frontend Setup (Vite + React)
+##Frontend Deploy (React Vite)
 
-1. Navigate to `frontend/`.
+1. CD to `frontend/`
 2. Install dependencies:
    ```bash
    npm install
@@ -35,7 +33,6 @@ The backend stores data under `backend/data/` (uploads, ChromaDB files, and meta
    ```bash
    npm run dev
    ```
-4. Open the provided localhost URL (default `http://localhost:5173`).
 
 ## Workflow
 
@@ -64,10 +61,3 @@ The backend stores data under `backend/data/` (uploads, ChromaDB files, and meta
 |  \- package.json
 \- README.md
 ```
-
-## Notes
-
-- The prototype uses sentence-transformers for embeddings, so the first ingestion call will download weights.
-- ChromaDB operates in persistent mode under `backend/data/chroma/`; delete this directory to reset the vector store.
-- PDF/DOCX extraction happens locally using `pdfplumber` and `python-docx`.
-- The synthetic tree is informational only; files on disk are not moved.
