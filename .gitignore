@@ -1,0 +1,23 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+backend/.venv/
+backend/venv/
+backend/.env
+
+# FastAPI / data artifacts
+backend/data/uploads/
+backend/data/chroma/
+
+# Node / frontend
+frontend/node_modules/
+frontend/dist/
+
+# General environment files
+.env
